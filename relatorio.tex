@@ -1,0 +1,82 @@
+\documentclass{article} % Aqui define o template. Mude para report e teste
+\usepackage{graphicx} % Para inserir imagens
+\usepackage[brazil]{babel} % Para mudar a linguagem para português
+\usepackage{amsmath} % Para formatação matemática
+\usepackage{amssymb} % Para símbolos matemáticos
+%\usepackage[sort, numbers]{natbib} % Para referências
+\usepackage[alf]{abntex2cite} % Para referências
+
+\title{Atividade - Lab de Redes}
+\author{Alana Silva Barbosa}
+\date{Fevereiro de 2025}
+
+\begin{document}
+
+\maketitle  % Isso gera o título, autor e data automaticamente centralizados
+
+\section{Introdução}
+
+Este relatório tem como objetivo apresentar a análise realizada com a ferramenta Wireshark, utilizada em sala para capturar e inspecionar pacotes de dados em redes de comunicação. O Wireshark organiza os pacotes por protocolos, permitindo a identificação e resolução de problemas de rede. A análise foi conduzida por meio da captura em tempo real, filtragem por protocolos e detalhamento das informações dos pacotes, como portas de comunicação.
+
+A ferramenta foi empregada para demonstrar suas funcionalidades, incluindo os principais painéis de visualização: Lista de Pacotes, Detalhes dos Pacotes e Bytes dos Pacotes. O relatório descreve como o Wireshark pode ser usado para  entender protocolos de rede.
+
+\section{Protocolos Identificados}
+\begin{tabular}{|c|c|} 
+    \hline 
+    Protocolo & Camada   \\ \hline 
+    HTTP & Camada de Aplicação (7-OSI) \\ \hline
+    ARP & Camada de Enlace (2-OSI) \\ \hline
+    QUIC & Camada de Transporte (5-OSI) \\ \hline
+    TCP & Camada de Transporte (5-OSI) \\ \hline
+    MDNS & Camada de Rede (3-OSI) \\ \hline
+\end{tabular}
+
+\section{IP PUCPCALDAS}
+Fazendo uso do comando "ping", é possível chegar ao IP 10.132.254.226 para o site www.pucpcaldas.br.
+
+\section{Cabeçalho TCP}
+
+\begin{itemize}
+    \item \textbf{Source Port} – Identifica a porta do remetente da conexão.
+    \item \textbf{Destination Port} – Identifica a porta do destinatário.
+    \item \textbf{Sequence Number} – Indica o número do primeiro byte nos dados transmitidos.
+    \item \textbf{Acknowledgment Number} – Confirma o recebimento dos dados pelo destinatário.
+    \item \textbf{Flags or Control Bits} – Conjunto de bits que indicam o estado da conexão, como:
+    \begin{itemize}
+        \item \textbf{SYN} – Sincronização de conexão.
+        \item \textbf{ACK} – Confirmação.
+        \item \textbf{FIN} – Finalização da conexão.
+        \item \textbf{RST} – Redefinição da conexão.
+        \item \textbf{PSH} – Envio imediato.
+        \item \textbf{URG} – Dados urgentes.
+    \end{itemize}
+    \item \textbf{Window} – Define o tamanho do buffer do receptor para controle de fluxo.
+    \item \textbf{Checksum} – Verifica a integridade do segmento TCP.
+    \item \textbf{Urgent Pointer} – Indica se há dados urgentes no pacote.
+    \item \textbf{Options (if any)} – Pode conter parâmetros adicionais, como o tamanho da janela escalável e timestamps.
+\end{itemize}
+
+\begin{figure}[h] % 'h' indica que a imagem deve aparecer no local especificado no código
+    \centering
+    \includegraphics[width=0.7\textwidth]{TCP.png} 
+    \caption{Pacote capturado para análise} % Texto abaixo da imagem
+    \label{fig:exemplo} 
+\end{figure}
+
+\section{Cabeçalho UDP}
+
+\begin{itemize}
+    \item \textbf{Source Port} – Identifica a porta de origem do remetente.
+    \item \textbf{Destination Port} – Identifica a porta de destino do receptor.
+    \item \textbf{Length} – Indica o comprimento do segmento UDP, incluindo os campos de cabeçalho e dados.
+    \item \textbf{Checksum} – Verifica a integridade do segmento UDP e dos dados transmitidos.
+\end{itemize}
+
+\begin{figure}[h] % 'h' indica que a imagem deve aparecer no local especificado no código
+    \centering
+    \includegraphics[width=0.7\textwidth]{UDP.png} 
+    \caption{Pacote capturado para análise} % Texto abaixo da imagem
+    \label{fig:exemplo} 
+\end{figure}
+
+\end{document}
